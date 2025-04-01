@@ -3,20 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>>Ma To-Do List</title>
+    <title>Ma To-Do List</title>
 </head>
 <body>
-    
+
     <div class="todo-container">
         <h1>Ma To-Do List</h1>
-    <div class="input-section">
-        <input type="text" id="taskInput" placeholder="Ajouter une nouvelle tâche...">
-        <button id="addTaskBtn">Ajouter</button>
-    </div>
+
+        <!-- Choisir une catégorie -->
+        <div class="input-section">
+            <select id="taskCategory">
+                <option value="perso">Personnel</option>
+                <option value="travail">Travail</option>
+                <option value="courses">Courses</option>
+                <option value="autre">Autre</option>
+            </select>
+            
+            <input type="text" id="taskInput" placeholder="Ajouter une nouvelle tâche...">
+            <button id="addTaskBtn">Ajouter</button>
+        </div>
+
+        <!-- Compteur de tâches -->
+        <p id="taskCounter">Tâches restantes : <span>0</span></p>
+
         <ul id="taskList"></ul>
+
+        <!-- Bouton pour tout effacer -->
+        <button id="clearAllBtn">Supprimer toutes les tâches</button>
     </div>
 
-        <script src="script.js"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>
