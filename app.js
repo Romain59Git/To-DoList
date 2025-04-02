@@ -1,56 +1,59 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const taskInput = document.getElementById("taskInput");
-    const addTaskBtn = document.getElementById("addTaskBtn");
-    const taskList = document.getElementById("taskList");
+// To-DoList/app.js
 
-    // Ajouter une tâche
-    addTaskBtn.addEventListener("click", function () {
-        const taskText = taskInput.value.trim();
+// Récupérer les éléments HTML
+const taskInput = document.getElementById("taskInput"); // Récupérer l'élément HTML avec l'id "taskInput"
+const addTaskBtn = document.getElementById("addTaskBtn"); // Récupérer l'élément HTML avec l'id "addTaskBtn"
+const taskList = document.getElementById("taskList"); // Récupérer l'élément HTML avec l'id "taskList"
 
-        if (taskText === "") {
-            alert("Veuillez entrer une tâche !");
-            return;
-        }
+// Ajouter une tâche
+addTaskBtn.addEventListener("click", function () {
+  // Récupérer la valeur de l'élément taskInput et la stocker dans la variable taskText
+  const taskText = taskInput.value.trim(); // Récupérer la valeur de l'élément taskInput et la stocker dans la variable taskText
 
-        // Créer un élément <li>
-        const taskItem = document.createElement("li");
-        taskItem.classList.add("task-item");
+  // Vérifier si la variable taskText est vide
+  if (taskText === "") { // Vérifier si la variable taskText est vide
+    alert("Veuillez entrer une tâche !"); // Afficher un message d'alerte si la variable taskText est vide
+    return; // Arrêter l'exécution de la fonction si la variable taskText est vide
+  }
 
-        // Texte de la tâche
-        const taskSpan = document.createElement("span");
-        taskSpan.classList.add("task-text");
-        taskSpan.textContent = taskText;
+  // Créer un élément <li>
+  const taskItem = document.createElement("li"); // Créer un nouvel élément HTML de type "li" (liste)
+  taskItem.classList.add("task-item"); // Ajouter une classe CSS à l'élément taskItem
 
-        // Bouton de suppression
-        const deleteBtn = document.createElement("button");
-        deleteBtn.classList.add("delete-btn");
-        deleteBtn.textContent = "Supprimer";
+  // Texte de la tâche
+  const taskSpan = document.createElement("span"); // Créer un nouvel élément HTML de type "span"
+  taskSpan.classList.add("task-text"); // Ajouter une classe CSS à l'élément taskSpan
+  taskSpan.textContent = taskText; // Définir le contenu textuel de l'élément taskSpan à la valeur de la variable taskText
 
-        // Marquer comme terminé en cliquant
-        taskSpan.addEventListener("click", function () {
-            taskSpan.classList.toggle("completed");
-        });
+  // Bouton de suppression
+  const deleteBtn = document.createElement("button"); // Créer un nouvel élément HTML de type "button"
+  deleteBtn.classList.add("delete-btn"); // Ajouter une classe CSS à l'élément deleteBtn
+  deleteBtn.textContent = "Supprimer"; // Définir le contenu textuel de l'élément deleteBtn
 
-        // Supprimer la tâche
-        deleteBtn.addEventListener("click", function () {
-            taskList.removeChild(taskItem);
-        });
+  // Marquer comme terminé en cliquant
+  taskSpan.addEventListener("click", function () {
+    taskSpan.classList.toggle("completed"); // Ajouter ou supprimer la classe CSS "completed" à l'élément taskSpan
+  });
 
-        // Ajouter les éléments à la tâche
-        taskItem.appendChild(taskSpan);
-        taskItem.appendChild(deleteBtn);
+  // Supprimer la tâche
+  deleteBtn.addEventListener("click", function () {
+    taskList.removeChild(taskItem); // Supprimer l'élément taskItem de la liste taskList
+  });
 
-        // Ajouter la tâche à la liste
-        taskList.appendChild(taskItem);
+  // Ajouter les éléments à la tâche
+  taskItem.appendChild(taskSpan); // Ajouter l'élément taskSpan à l'élément taskItem
+  taskItem.appendChild(deleteBtn); // Ajouter l'élément deleteBtn à l'élément taskItem
 
-        // Effacer l'input
-        taskInput.value = "";
-    });
+  // Ajouter la tâche à la liste
+  taskList.appendChild(taskItem); // Ajouter l'élément taskItem à la liste taskList
 
-    // Ajouter une tâche en appuyant sur "Entrée"
-    taskInput.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            addTaskBtn.click();
-        }
-    });
+  // Effacer l'input
+  taskInput.value = ""; // Effacer la valeur de l'élément taskInput
+});
+
+// Ajouter une tâche en appuyant sur "Entrée"
+taskInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") { // Vérifier si la touche "Entrée" est appuyée
+    addTaskBtn.click(); // Simuler un clic sur le bouton addTaskBtn
+  }
 });
